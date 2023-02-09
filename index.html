@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="crud">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD com AngularJS</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="angular/angular.js"></script>
+    <script src="angular/clienteCtrl.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="controller">
+    <div class="navbar">
+		<ul class="nav nav-pills">
+			<li role="presentation" class="active"><a href="#">Home</a></li>
+			<li role="presentation"><a href="#">Clientes</a></li>
+			<li role="presentation"><a href="#">Produtos</a></li>
+		</ul>
+	</div>
+    <hr>
+    <div class='col-sm-offset-4 col-sm-4'>
+        <h2> Listagem de Clientes </h2>
+    </div>
+    <div class='col-sm-4'>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Novo</button>
+    </div>
+    <hr>
+    <div class=' col-sm-offset-1 col-sm-9'>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="th">Código</th>
+                    <th class="th">Nome</th>
+                    <th class="th">Nascimento</th>
+                    <th class="th">Sexo</th>
+                    <th class="th">Pcd</th>
+                    <th class="th">Altura</th>
+                    <th class="th">Peso</th>
+                    <th class="th">Endereço</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="cliente in clientes">
+                    <td>{{cliente.codigo}}</td>
+                    <td>{{cliente.nome}}</td>
+                    <td>{{cliente.nascimento}}</td>
+                    <td>{{cliente.sexo == "Masculino" ? "M" : "F"}}</td>
+                    <td>{{cliente.pcd == false ? "não":"sim"}}</td>
+                    <td>{{cliente.altura}}</td>
+                    <td>{{cliente.peso}}</td>
+                    <td>{{cliente.endereco.cep}} {{cliente.endereco.rua}} {{cliente.endereco.numero}}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModalEditar"
+                            ng-click="selecionaCliente(cliente)">Editar</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalExcluir"
+                            ng-click="selecionaCliente(cliente)">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Novo Cadastro</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Código</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="12565"
+                                    ng-model="novoCliente.codigo">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Nome</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Nome..."
+                                    ng-model="novoCliente.nome">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Data de Nascimento</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" placeholder="Data de Nascimento"
+                                    ng-model="novoCliente.nascimento">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Altura</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="Altura"
+                                    ng-model="novoCliente.altura">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Peso</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="Peso"
+                                    ng-model="novoCliente.peso">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">CPF / CNPJ</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="00000000000"
+                                    ng-model="novoCliente.cpfcnpj">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Sexo</label>
+                            <div class="col-sm-10">
+                                    <select class="form-control" ng-model="novoCliente.sexo">
+                                        <option>Masculino</option>
+                                        <option>Feminino</option>
+                                        <option>Outro</option>
+                                        <option>Prefiro não informar</option>
+                                    </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Tipo de Pessoa</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" ng-model="novoCliente.tipopessoa">
+                                    <option>Física</option>
+                                    <option>Jurídica</option>
+                                    <option>Especial</option>
+                                    <option>Outros</option>
+                                </select>        
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Portador de Necessidades Especiais</label>
+                            <div class="col-sm-10">
+                                <input type="checkbox" name="sim">Sim</input>
+                                <input type="checkbox" name="não">Não</input>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Cep</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Nome..."
+                                    ng-model="novoCliente.endereco.cep">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Rua</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Nome..."
+                                    ng-model="novoCliente.endereco.rua">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Número</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Nome..."
+                                    ng-model="novoCliente.endereco.numero">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Complemento</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Complemento..."
+                                    ng-model="novoCliente.endereco.complemento">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Bairro</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Vila Nova..."
+                                    ng-model="novoCliente.bairro.nome">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Valor do Iptu</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="1250"
+                                    ng-model="novoCliente.bairro.valoriptu">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Profissão</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Nome..."
+                                    ng-model="novoCliente.profissao.nome">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Salário</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="5220"
+                                    ng-model="novoCliente.profissao.salario">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary" ng-click="salvar()"
+                                    data-dismiss="modal">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModalEditar" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Editar Cadastro</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Código</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Código..."
+                                    ng-model="clienteSelecionado.codigo">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Nome</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Nome..."
+                                    ng-model="clienteSelecionado.nome">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Data de Nascimento</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" placeholder="Data de Nascimento"
+                                    ng-model="clienteSelecionado.nascimento">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Altura</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="Altura"
+                                    ng-model="clienteSelecionado.altura">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Peso</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="Peso"
+                                    ng-model="clienteSelecionado.peso">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">CPF / CNPJ</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="00000000000"
+                                    ng-model="clienteSelecionado.cpfcnpj">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Sexo</label>
+                            <div class="col-sm-10">
+                                    <select class="form-control" ng-model="clienteSelecionado.sexo">
+                                        <option>Masculino</option>
+                                        <option>Feminino</option>
+                                        <option>Outro</option>
+                                        <option>Prefiro não informar</option>
+                                    </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Tipo de Pessoa</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" ng-model="clienteSelecionado.tipopessoa">
+                                    <option>Física</option>
+                                    <option>Jurídica</option>
+                                    <option>Especial</option>
+                                    <option>Outros</option>
+                                </select>        
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Portador de Necessidades Especiais</label>
+                            <div class="col-sm-10">
+                                <input type="checkbox" name="sim" ng-model="clienteSelecionado.pcd">Sim</input>
+                                <input type="checkbox" name="não" ng-model="clienteSelecionado.pcd">Não</input>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Cep</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Nome..."
+                                    ng-model="clienteSelecionado.endereco.cep">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Rua</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Nome..."
+                                    ng-model="clienteSelecionado.endereco.rua">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Número</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Nome..."
+                                    ng-model="clienteSelecionado.endereco.numero">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Complemento</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Complemento..."
+                                    ng-model="clienteSelecionado.endereco.complemento">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Bairro</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Vila Nova..."
+                                    ng-model="clienteSelecionado.bairro.nome">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Valor do Iptu</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="1250"
+                                    ng-model="clienteSelecionado.bairro.valoriptu">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Profissão</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Nome..."
+                                    ng-model="clienteSelecionado.profissao.nome">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Salário</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="5220"
+                                    ng-model="clienteSelecionado.profissao.salario">
+                            </div>
+                        </div>
+                      
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary" ng-click="alterarCliente()"
+                                    data-dismiss="modal">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModalExcluir" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Você tem certeza?</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 style="font-weight: bolder"> Você vai excluir o Cadastro de {{clienteSelecionado.nome}}</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="excluirCliente()"
+                        data-dismiss="modal">Sim</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

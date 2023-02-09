@@ -1,0 +1,36 @@
+{
+  "clientes": [
+    {
+      "id": 2,
+      "codigo": 2346,
+      "nome": "Megasoft",
+      "nascimento": "",
+      "sexo": "Feminino",
+      "pcd": false,
+      "altura": 158,
+      "peso": 90,
+      "cpfcnpj": "12831407000140",
+      "tipopessoa": {
+        "codigo": 2,
+        "pessoa": "Juridica"
+      },
+      "bairro": {
+        "codigo": 2,
+        "nome": "Plano Diretor Norte",
+        "valoriptu": 2000
+      },
+      "profissao": {
+        "codigo": 2,
+        "nome": "Dentista",
+        "salario": 4000
+      },
+      "endereco": {
+        "codigo": 2,
+        "rua": "LO 02",
+        "numero": "00",
+        "complemento": "Galeria Buritis",
+        "cep": "77001014"
+      }
+    }
+  ]
+}
