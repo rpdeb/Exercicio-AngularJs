@@ -1,5 +1,5 @@
 angular.module("compra", []);
-angular.module("compra").controller("controller", function ($scope, $http) {
+angular.module("compra").controller("compraCtlr", function ($scope, $http) {
 
 
 });
