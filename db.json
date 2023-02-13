@@ -57,18 +57,49 @@
       "id": 3
     }
   ],
-  "compra": [
+  "compras": [
     {
+      "id": 1,
       "codigo": "16666",
       "valortotal": 183,
       "pessoa": {
         "codigo": "16789",
         "nome": "Mariana Santos Almeida"
       }
+    },
+    {
+      "codigo": "12154",
+      "valortotal": 197,
+      "pessoaSelecionada": {
+        "codigo": "16789",
+        "nome": "Mariana Santos Almeida",
+        "nascimento": "2023-02-13T03:00:00.000Z",
+        "altura": 1.83,
+        "peso": 90,
+        "cpfcnpj": "45515112121",
+        "sexo": "Feminino",
+        "tipopessoa": "Física",
+        "endereco": {
+          "cep": "78777878454",
+          "rua": "Rua 18",
+          "complemento": "Próximo a Praça Central"
+        },
+        "bairro": {
+          "nome": "Vila Nova",
+          "valoriptu": 1582
+        },
+        "profissao": {
+          "nome": "Dentista",
+          "salario": 8451
+        },
+        "id": 3
+      },
+      "id": 2
     }
   ],
-  "itemdecompra": [
+  "itemsdecompra": [
     {
+      "id": 2,
       "codigo": "16666",
       "nome": "Notebook Dell Latitude 3420",
       "valor": 183,
