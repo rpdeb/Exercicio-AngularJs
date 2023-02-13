@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="crudItemCompra">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD com AngularJS</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="angular/angular.js"></script>
+    <script src="angular/itemCompraCtrl.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller="itemCompraCtrl">
+    <div class="navbar">
+		<ul class="nav nav-pills">
+			<li role="presentation"><a href="index.html">Home</a></li>
+			<li role="presentation"><a href="compra.html">Compras</a></li>
+			<li role="presentation"><a href="produto.html">Produtos</a></li>
+		</ul>
+	</div>
+  
+<section id="bgd">
+    <div class='col-sm-offset-4 col-sm-4'>
+        <h3>Listagem de Produtos</h3>
+    </div>
+    <div class='col-sm-4'>
+        <button type="button" class="btn btn-primary glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal"></button>
+    </div>
+  
+    <div class=' col-sm-offset-1 col-sm-9'>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="th">Código</th>
+                    <th class="th">Nome</th>
+                    <th class="th">Valor</th>
+                    <th class="th">Compra</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="produto in produtos">
+                    <td>{{produto.codigo}}</td>
+                    <td>{{produto.nome}}</td>
+                    <td>{{produto.valor}}</td>
+                    <td>{{produto.compra.codigo}}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning glyphicon glyphicon-pencil" data-toggle="modal" data-target="#myModalEditar"
+                            ng-click="selecionaProduto(produto)"></button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger glyphicon glyphicon-remove" data-toggle="modal" data-target="#myModalExcluir"
+                            ng-click="selecionaProduto(produto)"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Novo Cadastro</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Código</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="12565"
+                                    ng-model="novoProduto.codigo">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Nome</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="12565"
+                                    ng-model="novoProduto.nome">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Valor</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="354"
+                                    ng-model="novoProduto.valor">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Compra</label>
+                            <div class="col-sm-10">
+                                    <select class="form-control" ng-model="novoProduto.compra.codigo" ng-options="item.codigo for item in compras"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary" ng-click="salvar()"
+                                    data-dismiss="modal">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModalEditar" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Editar Cadastro</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Código</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="0454"
+                                    ng-model="produtoSelecionado.codigo">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Nome</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="0454"
+                                    ng-model="produtoSelecionado.nome">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Valor</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="345"
+                                    ng-model="produtoSelecionado.valor">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Compra</label>
+                            <div class="col-sm-10">
+                                    <select class="form-control" ng-model="produtoSelecionado.compra.codigo" ng-options="item.codigo for item in compras"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary" ng-click="alterarProduto()"
+                                    data-dismiss="modal">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModalExcluir" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Você tem certeza?</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 style="font-weight: bolder"> Você vai excluir a produto de {{produtoSelecionado.pessoa.nome}}</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="excluirProduto()"
+                        data-dismiss="modal">Sim</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+</body>
+
+</html>
