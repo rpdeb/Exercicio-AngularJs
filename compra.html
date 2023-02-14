@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body ng-controller="compraController">
-    <div class="navbar">
+    <div class="navbar menu">
 		<ul class="nav nav-pills">
 			<li role="presentation"><a href="index.html">Home</a></li>
 			<li role="presentation"><a href="compra.html">Compras</a></li>
@@ -42,14 +42,10 @@
                 <tr ng-repeat="compra in compras">
                     <td>{{compra.codigo}}</td>
                     <td>{{compra.valortotal}}</td>
-                    <td>{{compra.pessoa.nome}} {{compra.pessoa.codigo}}</td>
-                    <td>
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModalEditar"
-                            ng-click="selecionaCompra(compra)"><i class="glyphicon glyphicon-pencil"></i></button>
-                    </td>
+                    <td>{{compra.pessoa.codigo}} {{compra.pessoa.nome}}</td>
                     <td>
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalExcluir"
-                            ng-click="selecionaCompra(compra)"><i class="glyphicon glyphicon-remove"></i></button>
+                            ng-click="selecionaCompra(compra)">Remover</button>
                     </td>
                 </tr>
             </tbody>
@@ -69,13 +65,13 @@
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal" role="form">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label class="control-label col-sm-2">Código</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" placeholder="12565"
                                     ng-model="novaCompra.codigo">
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <label class="control-label col-sm-2">Valor Total</label>
@@ -89,13 +85,13 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Pessoa</label>
                             <div class="col-sm-10">
-                                    <select class="form-control" ng-model="novaCompra.pessoaSelecionada" ng-options="item.nome for item in pessoas"></select>
+                                    <select class="form-control" ng-model="novaCompra.pessoa" ng-options="item.nome for item in pessoas"></select>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-primary" ng-click="salvar()"
+                                <button type="submit" class="btn btn-primary" ng-click="criarCompra(produto.valortotal,pessoas.codigo,pessoas.nome)"
                                     data-dismiss="modal">Salvar</button>
                             </div>
                         </div>

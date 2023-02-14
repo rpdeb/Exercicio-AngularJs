@@ -4,6 +4,7 @@ angular.module("crudItemCompra").controller("itemCompraCtrl", function ($scope, 
     $scope.novoProduto = {};
     $scope.produtoSelecionado = {};
     $scope.produtos = [];
+    $scope.compras = [];
   
     var listarProdutos = function () {
         $http.get("http://localhost:3000/itemsdecompra").success(function (data) {
@@ -14,8 +15,8 @@ angular.module("crudItemCompra").controller("itemCompraCtrl", function ($scope, 
 
     var listarCompras = function () {
         $http.get("http://localhost:3000/compras").success(function (data) {
-            console.log(data, "comprinhas");
             $scope.compras = data;
+            console.log(data, "compras");
         });
     };
 
@@ -30,7 +31,7 @@ angular.module("crudItemCompra").controller("itemCompraCtrl", function ($scope, 
     };
 
     $scope.selecionaProduto = function (produto) {
-        $scope.produtoSelecionada = produto;
+        $scope.produtoSelecionado = produto;
     };
 
     $scope.alterarProduto = function () {
@@ -45,7 +46,7 @@ angular.module("crudItemCompra").controller("itemCompraCtrl", function ($scope, 
     };
 
     $scope.excluirProduto = function () {
-        var produto = $scope.produtoSelecionada;
+        var produto = $scope.produtoSelecionado;
         
         $http.delete(`http://localhost:3000/itemsdecompra/${produto.id}`,produto).success(function (data) {
 			$scope.produtos = data;

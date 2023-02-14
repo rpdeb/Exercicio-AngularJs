@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body ng-controller="itemCompraCtrl">
-    <div class="navbar">
+    <div class="navbar menu">
 		<ul class="nav nav-pills">
 			<li role="presentation"><a href="index.html">Home</a></li>
 			<li role="presentation"><a href="compra.html">Compras</a></li>
@@ -44,7 +44,7 @@
                     <td>{{produto.codigo}}</td>
                     <td>{{produto.nome}}</td>
                     <td>{{produto.valor}}</td>
-                    <td>{{produto.compra.codigo}}</td>
+                    <td>{{produto.compra}}</td>
                     <td>
                         <button type="button" class="btn btn-warning glyphicon glyphicon-pencil" data-toggle="modal" data-target="#myModalEditar"
                             ng-click="selecionaProduto(produto)"></button>
@@ -82,7 +82,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Nome</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="12565"
+                                <input type="text" class="form-control" placeholder="Mala de viagem"
                                     ng-model="novoProduto.nome">
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Compra</label>
                             <div class="col-sm-10">
-                                    <select class="form-control" ng-model="novoProduto.compra.codigo" ng-options="item.codigo for item in compras"></select>
+                                    <select class="form-control" ng-model="novoProduto.codigo" ng-options="item.codigo for item in compras"></select>
                             </div>
                         </div>
 
@@ -134,7 +134,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Código</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="0454"
+                                <input type="text" class="form-control" placeholder="04541"
                                     ng-model="produtoSelecionado.codigo">
                             </div>
                         </div>
@@ -142,7 +142,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Nome</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="0454"
+                                <input type="text" class="form-control" placeholder="Computador Dell ..."
                                     ng-model="produtoSelecionado.nome">
                             </div>
                         </div>

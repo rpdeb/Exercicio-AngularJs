@@ -1,10 +1,23 @@
 body {
-    background-color: #eaede7;
+    background-color: #f8ebdc;
+    color: #0a0a0a;
 }
-.th{
+
+.th {
     border: 0px;
 }
+
 .icon-tbl {
     padding: 0;
     border: 0px;
+}
+
+.menu {
+    padding-top: 2%;
+    background-color: rgb(244, 244, 246);
+    color: #fafafa;
+    text-align: center;
+}
+ul{
+    margin-left: 2%;
 }
