@@ -5,6 +5,7 @@ angular.module("crudCompra").controller("compraController", function ($scope, $h
     $scope.compraSelecionada = {};
     $scope.compras = [];
     $scope.pessoas = [];
+    $scope.itens = [];
 
     var listarPessoas = function () {
         $http.get("http://localhost:3000/pessoas").success(function (data) {
@@ -21,21 +22,29 @@ angular.module("crudCompra").controller("compraController", function ($scope, $h
         });
     };
 
-    $scope.criarCompra = function (valortotal,codigo,nome) {
-        var compra = {
-            codigo: Math.floor(Math.random() * 10000),
-            valortotal: valortotal,
-            pessoa: {
-                codigo: codigo,
-                nome: nome
-            }
-        };
-        $scope.salvar(compra);
-    }
+    var listarItens = function () {
+        $http.get("http://localhost:3000/itensdecompra").success(function (data) {
+            console.log(data, "itens");
+            $scope.itens = data;
+        });
+    };
+
+    // $scope.criarCompra = function (valortotal,codigo,nome) {
+    //     var compra = {
+    //         codigo: Math.floor(Math.random() * 10000),
+    //         valortotal: valortotal,
+    //         pessoa: {
+    //             codigo: codigo,
+    //             nome: nome
+    //         }
+    //     };
+    //     $scope.salvar(compra);
+    // }
 
     $scope.salvar = function (compra) {
-        //$scope.compras.push($scope.novaCompra);
-        //var compra = $scope.novaCompra;
+        $scope.novaCompra.codigo = Math.floor(Math.random() * 1000);
+        $scope.compras.push($scope.novaCompra);
+        var compra = $scope.novaCompra;
         $http.post("http://localhost:3000/compras", compra).success(function (data) {
 		console.log("realizou o post - pessoa com id", data.id);	
         listarCompras();
@@ -75,4 +84,5 @@ angular.module("crudCompra").controller("compraController", function ($scope, $h
 
     listarCompras();
     listarPessoas();
+    listarItens();
 });

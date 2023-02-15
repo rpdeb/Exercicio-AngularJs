@@ -68,28 +68,40 @@
       }
     },
     {
-      "codigo": 6971,
-      "pessoa": {},
-      "id": 2
-    },
-    {
-      "codigo": 3360,
-      "pessoa": {},
+      "pessoa": {
+        "codigo": "16789",
+        "nome": "Mariana Santos Almeida",
+        "nascimento": "2023-02-13T03:00:00.000Z",
+        "altura": 1.83,
+        "peso": 90,
+        "cpfcnpj": "45515112121",
+        "sexo": "Feminino",
+        "tipopessoa": "Física",
+        "endereco": {
+          "cep": "78777878454",
+          "rua": "Rua 18",
+          "complemento": "Próximo a Praça Central"
+        },
+        "bairro": {
+          "nome": "Vila Nova",
+          "valoriptu": 1582
+        },
+        "profissao": {
+          "nome": "Dentista",
+          "salario": 8451
+        },
+        "id": 3
+      },
+      "codigo": 794,
       "id": 3
-    },
-    {
-      "codigo": 3990,
-      "pessoa": {},
-      "id": 4
     }
   ],
-  "itemsdecompra": [
+  "itensdecompra": [
     {
-      "id": 2,
-      "codigo": "16666",
-      "nome": "Notebook Dell Latitude 3420",
-      "valor": 183,
-      "compra": "16666"
+      "id": 3,
+      "codigo": "14752",
+      "nome": "mochila de costas",
+      "valor": 547
     }
   ]
 }
