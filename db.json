@@ -7,7 +7,7 @@
       "nascimento": "",
       "sexo": "Feminino",
       "pcd": false,
-      "altura": 158,
+      "altura": 1.58,
       "peso": 90,
       "cpfcnpj": "12831407000140",
       "tipopessoa": {
@@ -55,6 +55,31 @@
         "salario": 8451
       },
       "id": 3
+    },
+    {
+      "codigo": 382,
+      "nome": "Mariana Leite",
+      "nascimento": "2022-12-07T03:00:00.000Z",
+      "altura": 1.6,
+      "peso": 89,
+      "cpfcnpj": "02154545120",
+      "sexo": "Feminino",
+      "tipopessoa": "Física",
+      "endereco": {
+        "cep": "77006000",
+        "rua": "Av 2",
+        "numero": "41",
+        "complemento": "Próximo a Caixa Econômica"
+      },
+      "bairro": {
+        "nome": "Plano Diretor Sul",
+        "valoriptu": 4789
+      },
+      "profissao": {
+        "nome": "Cabeleireira",
+        "salario": 7451
+      },
+      "id": 4
     }
   ],
   "compras": [
@@ -68,6 +93,7 @@
       }
     },
     {
+      "valorTotal": 200,
       "pessoa": {
         "codigo": "16789",
         "nome": "Mariana Santos Almeida",
@@ -92,8 +118,40 @@
         },
         "id": 3
       },
-      "codigo": 794,
-      "id": 3
+      "quantidade": 2,
+      "codigo": 953,
+      "id": 8
+    },
+    {
+      "valorTotal": 0,
+      "codigo": 955,
+      "pessoa": {
+        "codigo": 382,
+        "nome": "Mariana Leite",
+        "nascimento": "2022-12-07T03:00:00.000Z",
+        "altura": 1.6,
+        "peso": 89,
+        "cpfcnpj": "02154545120",
+        "sexo": "Feminino",
+        "tipopessoa": "Física",
+        "endereco": {
+          "cep": "77006000",
+          "rua": "Av 2",
+          "numero": "41",
+          "complemento": "Próximo a Caixa Econômica"
+        },
+        "bairro": {
+          "nome": "Plano Diretor Sul",
+          "valoriptu": 4789
+        },
+        "profissao": {
+          "nome": "Cabeleireira",
+          "salario": 7451
+        },
+        "id": 4
+      },
+      "quantidade": 7,
+      "id": 9
     }
   ],
   "itensdecompra": [
@@ -121,6 +179,12 @@
       "nome": "Squeeze 23",
       "valor": 100,
       "id": 7
+    },
+    {
+      "codigo": 5840,
+      "nome": "mala",
+      "valor": 122,
+      "id": 8
     }
   ]
 }

@@ -4,6 +4,7 @@ angular.module("crud").controller("controller", function ($scope, $http) {
     $scope.novaPessoa = {};
     $scope.pessoaSelecionado = {};
     $scope.pessoas = [];
+    $scope.novaPessoa.codigo = Math.floor(Math.random() * 1000);
 
     var listarPessoas = function () {
         $http.get("http://localhost:3000/pessoas").success(function (data) {

@@ -6,7 +6,8 @@ angular.module("crudCompra").controller("compraController", function ($scope, $h
     $scope.compras = [];
     $scope.pessoas = [];
     $scope.itens = [];
-    //$scope.itensSelecionados = [];
+    $scope.novaCompra.valorTotal = 0;
+    $scope.novaCompra.codigo = Math.floor(Math.random() * 1000);
 
     var listarPessoas = function () {
         $http.get("http://localhost:3000/pessoas").success(function (data) {
@@ -43,12 +44,12 @@ angular.module("crudCompra").controller("compraController", function ($scope, $h
     // }
 
     $scope.salvar = function (compra) {
-        $scope.novaCompra.codigo = Math.floor(Math.random() * 1000);
         $scope.compras.push($scope.novaCompra);
         var compra = $scope.novaCompra;
         $http.post("http://localhost:3000/compras", compra).success(function (data) {
             console.log("realizou o post - pessoa com id", data.id);
             listarCompras();
+            $scope.calculaValorTotal();
         });
         //$scope.novaCompra = {};
     };
@@ -74,25 +75,23 @@ angular.module("crudCompra").controller("compraController", function ($scope, $h
 
     $scope.excluirCompra = function () {
         var compra = $scope.compraSelecionada;
-
+        $scope.compras.splice($scope.compras.indexOf($scope.compraSelecionada), 1);
         $http.delete(`http://localhost:3000/compras/${compra.id}`, compra).success(function (data) {
             $scope.compras = data;
             console.log($scope.compras);
             console.log("sucesso na exclusão");
+            listarCompras();
         });
-        $scope.compras.splice($scope.compras.indexOf($scope.compraSelecionada), 1);
     };
 
     // $scope.insereItem = function (itemSelecionado){
     //     $scope.itensSelecionados.push(itemSelecionado);
     // }
 
-    // $scope.calculaValorTotal = function(itensSelecionados){
-    //     var soma, i;
-    //     soma = $scope.itensSelecionados.valor[i]; 
-    //     console.log(valorItens,"valorItens");
-    //     console.log(soma,"soma");
-    // }
+    $scope.calculaValorTotal = function(){
+       var item = $scope.itemSelecionado.valor;
+       $scope.novaCompra.valorTotal = $scope.novaCompra.quantidade * item;
+    }
 
     listarCompras();
     listarPessoas();
