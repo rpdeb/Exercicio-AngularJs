@@ -71,7 +71,7 @@
                                     ng-model="novaCompra.codigo">
                             </div>
                         </div> -->
-
+                        
                         <div class="form-group">
                             <label class="control-label col-sm-2">Pessoa</label>
                             <div class="col-sm-10">
@@ -82,15 +82,16 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Itens</label>
                             <div class="col-sm-10">
-                                    <select class="form-control" ng-model="itensSelecionados" ng-options="item.nome for item in itens"></select>
-                            </div>
+                                    <select class="form-control" ng-model="itemSelecionado" ng-options="item.nome for item in itens"></select>
+                                    <button type="button" class="btn btn-primary glyphicon glyphicon-plus" ng-click="insereItem(itemSelecionado)"></button>
+                                    {{itensSelecionados}}
+                                </div>
                         </div>
                     
                         <div class="form-group">
                             <label class="control-label col-sm-2">Valor Total</label>
                             <div class="col-sm-10">
-                                <!-- <input type="number" class="form-control" placeholder="12565"
-                                    ng-model="novaCompra.valortotal"> -->
+                               <button ng-model="novaCompra.valortotal" ng-click="calculaValorTotal(itensSelecionados)"></button> 
                                     {{novaCompra.valortotal}}
                             </div>
                         </div>

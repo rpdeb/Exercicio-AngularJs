@@ -6,6 +6,7 @@ angular.module("crudCompra").controller("compraController", function ($scope, $h
     $scope.compras = [];
     $scope.pessoas = [];
     $scope.itens = [];
+    //$scope.itensSelecionados = [];
 
     var listarPessoas = function () {
         $http.get("http://localhost:3000/pessoas").success(function (data) {
@@ -46,9 +47,9 @@ angular.module("crudCompra").controller("compraController", function ($scope, $h
         $scope.compras.push($scope.novaCompra);
         var compra = $scope.novaCompra;
         $http.post("http://localhost:3000/compras", compra).success(function (data) {
-		console.log("realizou o post - pessoa com id", data.id);	
-        listarCompras();
-		});
+            console.log("realizou o post - pessoa com id", data.id);
+            listarCompras();
+        });
         //$scope.novaCompra = {};
     };
 
@@ -56,7 +57,7 @@ angular.module("crudCompra").controller("compraController", function ($scope, $h
     //     $scope.pessoaSelecionada = pessoa;
     // };
 
-    $scope.selecionaCompra= function (compra) {
+    $scope.selecionaCompra = function (compra) {
         $scope.compraSelecionada = compra;
     };
 
@@ -64,23 +65,34 @@ angular.module("crudCompra").controller("compraController", function ($scope, $h
     //     var compra = $scope.compraSelecionada;
 
     //     $http.put(`http://localhost:3000/compras/${compra.id}`,compra).success(function (data) {
-	// 		$scope.compras = data;
-	// 		console.log($scope.compras);	
-	// 		console.log("sucesso na alteração");
-	// 		});
+    // 		$scope.compras = data;
+    // 		console.log($scope.compras);	
+    // 		console.log("sucesso na alteração");
+    // 		});
     //     listarCompras();
     // };
 
     $scope.excluirCompra = function () {
         var compra = $scope.compraSelecionada;
-        
-        $http.delete(`http://localhost:3000/compras/${compra.id}`,compra).success(function (data) {
-			$scope.compras = data;
-			console.log($scope.compras);	
-			console.log("sucesso na exclusão");
-			});
+
+        $http.delete(`http://localhost:3000/compras/${compra.id}`, compra).success(function (data) {
+            $scope.compras = data;
+            console.log($scope.compras);
+            console.log("sucesso na exclusão");
+        });
         $scope.compras.splice($scope.compras.indexOf($scope.compraSelecionada), 1);
     };
+
+    // $scope.insereItem = function (itemSelecionado){
+    //     $scope.itensSelecionados.push(itemSelecionado);
+    // }
+
+    // $scope.calculaValorTotal = function(itensSelecionados){
+    //     var soma, i;
+    //     soma = $scope.itensSelecionados.valor[i]; 
+    //     console.log(valorItens,"valorItens");
+    //     console.log(soma,"soma");
+    // }
 
     listarCompras();
     listarPessoas();

@@ -102,6 +102,25 @@
       "codigo": "14752",
       "nome": "mochila de costas",
       "valor": 547
+    },
+    {
+      "codigo": 7836,
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "codigo": 1218,
+      "nome": "Squeeze 48",
+      "valor": 100,
+      "id": 6
+    },
+    {
+      "codigo": 2128,
+      "nome": "Squeeze 23",
+      "valor": 100,
+      "id": 7
     }
   ]
 }

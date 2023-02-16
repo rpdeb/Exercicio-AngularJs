@@ -5,6 +5,7 @@ angular.module("crudItemCompra").controller("itemCompraCtrl", function ($scope, 
     $scope.itemSelecionado = {};
     $scope.itens = [];
     $scope.compras = [];
+    $scope.novoItem.codigo = Math.floor(Math.random() * 10000);
   
     var listarItens = function () {
         $http.get("http://localhost:3000/itensdecompra").success(function (data) {
@@ -13,18 +14,9 @@ angular.module("crudItemCompra").controller("itemCompraCtrl", function ($scope, 
         });
     };
 
-    // var listarCompras = function () {
-    //     $http.get("http://localhost:3000/compras").success(function (data) {
-    //         $scope.compras = data;
-    //         console.log(data, "compras");
-    //     });
-    // };
-
     $scope.salvar = function () {
-        $scope.novoItem.codigo = Math.floor(Math.random() * 10000);
         $scope.itens.push($scope.novoItem);
-        var itemCompra = $scope.novoItem;
-        $http.post("http://localhost:3000/itensdecompra", itemCompra).success(function (data) {
+        $http.post("http://localhost:3000/itensdecompra", $scope.novoItem).success(function (data) {
 		console.log("realizou o post - pessoa com id", data);	
         listarItens();
 		});
