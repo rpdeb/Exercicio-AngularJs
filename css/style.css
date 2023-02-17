@@ -1,23 +1,16 @@
 body {
-    background-color: #f8ebdc;
     color: #0a0a0a;
 }
-
 .th {
     border: 0px;
 }
-
 .icon-tbl {
     padding: 0;
     border: 0px;
 }
-
-.menu {
-    padding-top: 1%;
-    background-color: rgb(244, 244, 246);
-    color: #fafafa;
+.tituloTable {
     text-align: center;
+    align-items: center;
+    padding: 1%;
 }
-ul{
-    margin-left: 2%;
-}
+
