@@ -40,11 +40,13 @@ angular.module("crudItemCompra").controller("itemCompraCtrl", function ($scope, 
 
     $scope.excluirItem = function () {
         var itemCompra = $scope.itemSelecionado;
+        console.log("excluir");
         
         $http.delete(`http://localhost:3000/itensdecompra/${itemCompra.id}`,itemCompra).success(function (data) {
-			$scope.itens = data;
+			//$scope.itens = data;
 			console.log($scope.itens);	
 			console.log("sucesso na exclusão");
+            listarItens();
 			});
         $scope.itens.splice($scope.itens.indexOf($scope.itemSelecionado), 1);
     };

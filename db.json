@@ -162,13 +162,6 @@
       "valor": 547
     },
     {
-      "codigo": 7836,
-      "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
       "codigo": 1218,
       "nome": "Squeeze 48",
       "valor": 100,
@@ -185,6 +178,12 @@
       "nome": "mala",
       "valor": 122,
       "id": 8
+    },
+    {
+      "codigo": 9845,
+      "nome": "bolsa de costas",
+      "valor": 189,
+      "id": 9
     }
   ]
 }
