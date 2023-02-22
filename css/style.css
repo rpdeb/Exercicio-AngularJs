@@ -21,9 +21,12 @@ body {
     border: 0;
     margin: 0;
 }
+.navbar-pessoa {
+    width: 100%;
+}
 /*footer */
 #rodape{
-    background-color: rgb(109, 90, 90);
+    background-color: rgb(50, 40, 33);
     color: white;
     align-items: center;
     text-align: center;
@@ -32,17 +35,7 @@ body {
 }
 #rodape .div-footer{
     padding: 1% 0;
-    border-bottom: solid 2px #fafafa;
-}
-#rodape .a-footer{
-    width: 60px;
-    height:60px;
-    cursor:pointer;
-}
-#rodape .a-footer-linkedin{
-    width: 90px;
-    height:90px;
-    cursor:pointer;
+    border-bottom: solid 2px #f57979;
 }
 /*display grid - para manipular as divs*/
 .page-grid-section{
