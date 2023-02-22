@@ -14,5 +14,42 @@ body {
     align-items: center;
     padding: 1%;
 }
-
+.banner-home {
+    width: 100%;
+}
+.nav-menu {
+    border: 0;
+    margin: 0;
+}
+/*footer */
+#rodape{
+    background-color: rgb(109, 90, 90);
+    color: white;
+    align-items: center;
+    text-align: center;
+    padding: 2%;
+    width: 100%;
+}
+#rodape .div-footer{
+    padding: 1% 0;
+    border-bottom: solid 2px #fafafa;
+}
+#rodape .a-footer{
+    width: 60px;
+    height:60px;
+    cursor:pointer;
+}
+#rodape .a-footer-linkedin{
+    width: 90px;
+    height:90px;
+    cursor:pointer;
+}
+/*display grid - para manipular as divs*/
+.page-grid-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:28px;
+    padding: 1% 10%;
+    background-color: #dadada;
+ }
 
