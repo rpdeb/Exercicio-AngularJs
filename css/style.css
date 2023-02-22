@@ -1,6 +1,7 @@
 body {
     color: #0a0a0a;
     background-color: rgb(119, 187, 247);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .th {
     border: 0px;
@@ -26,7 +27,7 @@ body {
 }
 /*footer */
 #rodape{
-    background-color: rgb(50, 40, 33);
+    background-color: rgb(21, 25, 105);
     color: white;
     align-items: center;
     text-align: center;
@@ -35,7 +36,7 @@ body {
 }
 #rodape .div-footer{
     padding: 1% 0;
-    border-bottom: solid 2px #f57979;
+    border-bottom: solid 2px #f0eff6;
 }
 /*display grid - para manipular as divs*/
 .page-grid-section{
@@ -44,5 +45,17 @@ body {
     gap:28px;
     padding: 1% 10%;
     background-color: #dadada;
+ }
+ .imagem-produtos-home {
+    border-radius: 1%;
+ }
+ .div-imagens-home {
+    padding: 1%;
+    text-align: center;
+ }
+ .div-mapa-home {
+    text-align: center;
+    align-items: center;
+    padding: 1%;
  }
 
