@@ -3,30 +3,37 @@ body {
     background-color: rgb(119, 187, 247);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 .th {
     border: 0px;
 }
+
 .icon-tbl {
     padding: 0;
     border: 0px;
 }
+
 .tituloTable {
     text-align: center;
     align-items: center;
     padding: 1%;
 }
+
 .banner-home {
     width: 100%;
 }
+
 .nav-menu {
     border: 0;
     margin: 0;
 }
+
 .navbar-pessoa {
     width: 100%;
 }
+
 /*footer */
-#rodape{
+#rodape {
     background-color: rgb(21, 25, 105);
     color: white;
     align-items: center;
@@ -34,25 +41,38 @@ body {
     padding: 2%;
     width: 100%;
 }
-#rodape .div-footer{
+
+#rodape .div-footer {
     padding: 1% 0;
     border-bottom: solid 2px #f0eff6;
 }
- .imagem-produtos-home {
+
+.imagem-produtos-home {
     border-radius: 1%;
- }
- .div-imagens-home {
+}
+
+.div-imagens-home {
     padding: 1%;
     text-align: center;
- }
- .div-mapa-home {
+}
+
+.div-mapa-home {
     text-align: center;
     align-items: center;
     padding: 1%;
- }
-footer {
+}
+
+#footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding: 1rem 0;
+    padding: 2%;
+    background-color: rgb(21, 25, 105);
+    color: white;
+    align-items: center;
+    text-align: center;
+}
+#footer .div-footer{
+    padding: 1% 0;
+    border-bottom: solid 2px #f0eff6;
 }
